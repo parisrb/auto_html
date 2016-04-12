@@ -1,9 +1,3 @@
-AutoHtml.add_filter(:html_escape).with(
-  :map => { 
-    '&' => '&amp;',  
-    '>' => '&gt;',
-    '<' => '&lt;',
-    '"' => '&quot;' }) do |text, options|
-
-  text.to_s.gsub(/[&"><]/) { |special| options[:map][special] }
+AutoHtml.add_filter(:html_escape).with(whiteliste_tags: []) do |text, options|
+  CGI.escapeHTML text, elements: options[:whiteliste_tags]
 end
