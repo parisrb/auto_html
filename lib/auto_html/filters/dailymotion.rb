@@ -4,9 +4,14 @@ AutoHtml.add_filter(:dailymotion).with(:width => 480, :height => 360) do |text, 
     options ||= {autoplay: 0}
     width = options.delete :width
     height = options.delete :height
+    url = "//www.dailymotion.com/embed/video/#{video_id}"
 
-    url_options = options.map { |k, v| "#{k}=\"#{v}\"" }.join('&')
+    if options.present?
+      url+="?#{URI.encode_www_form(hash)}"
+    end
 
-    "<iframe src='//www.dailymotion.com/embed/video/#{video_id}?#{url_options}' frameborder='0'></iframe>"
+    "<iframe src='#{url}' frameborder='0' allowfullscreen></iframe>"
   end
 end
+
+
