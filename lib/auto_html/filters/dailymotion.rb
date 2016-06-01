@@ -10,7 +10,7 @@ AutoHtml.add_filter(:dailymotion).with(:width => 480, :height => 360) do |text, 
       url+="?#{URI.encode_www_form(options)}"
     end
 
-    "<iframe src='#{url}' frameborder='0' allowfullscreen></iframe>"
+    "<iframe src='#{url}' frameborder='0' width='#{width}' height='#{height}' allowfullscreen></iframe>"
   end
 end
 
