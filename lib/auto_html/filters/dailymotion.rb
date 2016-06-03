@@ -1,5 +1,5 @@
 AutoHtml.add_filter(:dailymotion).with(:width => 480, :height => 360) do |text, options|
-  text.gsub(/http:\/\/www\.dailymotion\.com.*\/video\/(.+)_*/) do
+  text.gsub(/https?:\/\/www\.dailymotion\.com.*\/video\/(.+)_*/) do
     video_id = $1
     options ||= {autoplay: 0}
     width = options.delete :width
